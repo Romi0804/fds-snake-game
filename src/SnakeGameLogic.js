@@ -20,37 +20,38 @@ function SnakeGameLogic() {
 SnakeGameLogic.prototype.up = function() {
   // 위쪽 화살표 키를 누르면 실행되는 함수
   // 꼬리를 떼고 원래있던 머리의 위쪽에 붙여준다.
-  this.joints[0].y -=1
-  this.joints[1].y -=1
-  this.joints[2].y -=1
+  this.joints[this.joints.length-1].x=this.joints[0].x
+  this.joints[this.joints.length-1].y=this.joints[0].y-1
+  this.joints.unshift(this.joints[this.joints.length-1])
+  this.joints.pop()
   console.log('up');
 }
 
 SnakeGameLogic.prototype.down = function() {
   // 아래쪽 화살표 키를 누르면 실행되는 함수
-  this.joints[0].y +=1
-  const tail = joints.pop()
-  tail.y=3
-  joints.unshift(tail)
-
+  this.joints[this.joints.length-1].x=this.joints[0].x
+  this.joints[this.joints.length-1].y=this.joints[0].y+1
+  this.joints.unshift(this.joints[this.joints.length-1])
+  this.joints.pop()
   console.log('down');
 }
 
 SnakeGameLogic.prototype.left = function() {
   // 왼쪽 화살표 키를 누르면 실행되는 함수
   // 꼬리를 떼로 원래 있던 머리의 왼쪽에 붙여준다.
-
-  this.joints[0].x -=1
-  this.joints[1].x -=1
-  this.joints[2].x -=1
+  this.joints[this.joints.length-1].x=this.joints[0].x-1
+  this.joints[this.joints.length-1].y=this.joints[0].y
+  this.joints.unshift(this.joints[this.joints.length-1])
+  this.joints.pop()
   console.log('left');
 }
 
 SnakeGameLogic.prototype.right = function() {
   // 오른쪽 화살표 키를 누르면 실행되는 함수
-  this.joints[0].x +=1
-  this.joints[1].x +=1
-  this.joints[2].x +=1
+  this.joints[this.joints.length-1].x=this.joints[0].x+1
+  this.joints[this.joints.length-1].y=this.joints[0].y
+  this.joints.unshift(this.joints[this.joints.length-1])
+  this.joints.pop()
   console.log('right');
 }
 
