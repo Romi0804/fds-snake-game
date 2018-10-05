@@ -6,6 +6,8 @@ import {ROWS, COLS} from './config';
 function SnakeGameLogic() {
   // 각 마디의 좌표를 저장하는 배열
   this.joints = [
+    {x: 4, y: 0},
+    {x: 3, y: 0},
     {x: 2, y: 0},
     {x: 1, y: 0},
     {x: 0, y: 0},
@@ -17,21 +19,38 @@ function SnakeGameLogic() {
 
 SnakeGameLogic.prototype.up = function() {
   // 위쪽 화살표 키를 누르면 실행되는 함수
+  // 꼬리를 떼고 원래있던 머리의 위쪽에 붙여준다.
+  this.joints[0].y -=1
+  this.joints[1].y -=1
+  this.joints[2].y -=1
   console.log('up');
 }
 
 SnakeGameLogic.prototype.down = function() {
   // 아래쪽 화살표 키를 누르면 실행되는 함수
+  this.joints[0].y +=1
+  const tail = joints.pop()
+  tail.y=3
+  joints.unshift(tail)
+
   console.log('down');
 }
 
 SnakeGameLogic.prototype.left = function() {
   // 왼쪽 화살표 키를 누르면 실행되는 함수
+  // 꼬리를 떼로 원래 있던 머리의 왼쪽에 붙여준다.
+
+  this.joints[0].x -=1
+  this.joints[1].x -=1
+  this.joints[2].x -=1
   console.log('left');
 }
 
 SnakeGameLogic.prototype.right = function() {
   // 오른쪽 화살표 키를 누르면 실행되는 함수
+  this.joints[0].x +=1
+  this.joints[1].x +=1
+  this.joints[2].x +=1
   console.log('right');
 }
 
